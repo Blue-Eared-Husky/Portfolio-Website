@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang=""en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Sathvik's Portfolio</title>
+
+        <link rel="stylesheet" href="style.css">
+        
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    </head>
+
+    <script>
+        //changes theme
+        function lighttheme() {
+            //change body theme
+            attrclass = document.createAttribute("class");
+            attrclass.value = "light"
+            body = document.getElementsByTagName("body")[0];
+            body.setAttributeNode(attrclass);
+
+            //change dark theme button
+            attrclass3 = document.createAttribute("class");
+            attrclass3.value = "themebuttonlightselected";
+            button1 = document.getElementsByClassName("themebuttonlight")[0];
+            button1.setAttributeNode(attrclass3);
+            
+            attrname = document.createAttribute("name");
+            attrname.value = "sunny";
+            icon1 = document.getElementsByClassName("lighticon")[0];
+            icon1.setAttributeNode(attrname);
+
+            //change light theme button
+            attrclass4 = document.createAttribute("class");
+            attrclass4.value = "themebuttondark";
+            button2 = document.getElementsByClassName("themebuttondarkselected")[0];
+            button2.setAttributeNode(attrclass4);
+
+            attrname = document.createAttribute("name");
+            attrname.value = "moon-outline";
+            icon2 = document.getElementsByClassName("darkicon")[0];
+            icon2.setAttributeNode(attrname);
+        };
+
+        function darktheme() {
+            //change body theme
+            attrclass = document.createAttribute("class");
+            attrclass.value = "dark"
+            body = document.getElementsByTagName("body")[0];
+            body.setAttributeNode(attrclass);
+
+            //change dark theme button
+            attrclass3 = document.createAttribute("class");
+            attrclass3.value = "themebuttondarkselected";
+            button1 = document.getElementsByClassName("themebuttondark")[0];
+            button1.setAttributeNode(attrclass3);
+            
+            attrname = document.createAttribute("name");
+            attrname.value = "moon";
+            icon1 = document.getElementsByClassName("darkicon")[0];
+            icon1.setAttributeNode(attrname);
+
+            //change light theme button
+            attrclass4 = document.createAttribute("class");
+            attrclass4.value = "themebuttonlight";
+            button2 = document.getElementsByClassName("themebuttonlightselected")[0];
+            button2.setAttributeNode(attrclass4);
+
+            attrname = document.createAttribute("name");
+            attrname.value = "sunny-outline";
+            icon2 = document.getElementsByClassName("lighticon")[0];
+            icon2.setAttributeNode(attrname);
+        };
+    </script>
+
+    <body class="dark">
+        <!---Theme Menu--->
+        <div style="display: flex;">
+            <div class="thememenu">
+                <a class="themebuttonlight" onclick="lighttheme()"><ion-icon class="lighticon" name="sunny-outline"></ion-icon></a>
+                <a class="themebuttondarkselected" onclick="darktheme()"><ion-icon class="darkicon" name="moon"></ion-icon></a>
+            </div>
+        </div>
+
+        <!---Title--->
+        <div style="display: flex; justify-content: center; align-content: center;">
+            <div class="wrapper">
+                <b><div class="typingeffect">Sathvik's Coding Portfolio</div></b>
+            </div>
+        </div>
+        <br>
+
+        <!---PASSWORD GENERATOR--->
+        <center>
+            <a href="passgenerator.html">
+                <div class="textred">PASSWORD GENERATOR</div>
+            </a>
+        </center>
+
+        <!---TIMER--->
+        <center>
+            <a href="timer.html">
+                <div class="textyellow">TIMER</div>
+            </a>
+        </center>
+
+        <!---WORD FILTER--->
+        <center>
+            <a href="https://replit.com/@SathvikVemulapa/Word-Filter#index.html">
+                <div class="textgreen">WORD FILTER</div>
+            </a>
+        </center>
+
+        <!---H ARKER HELPERS--->
+        <center>
+            <a href="https://helpers.harker.org/" class="hhbutton">
+                <div class="textblue">HARKER HELPERS</div>
+            </a>
+        </center>
+    </body>
+</html>

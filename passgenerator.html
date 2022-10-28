@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Password Generator</title>
+
+        <link rel="stylesheet" href="style.css">
+        
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    </head>
+
+    <script>
+        //changes theme
+        function lighttheme() {
+            //change body theme
+            attrclass = document.createAttribute("class");
+            attrclass.value = "light";
+            body = document.getElementsByTagName("body")[0];
+            body.setAttributeNode(attrclass);
+
+            //change dark theme button
+            attrclass3 = document.createAttribute("class");
+            attrclass3.value = "themebuttonlightselected";
+            button1 = document.getElementsByClassName("themebuttonlight")[0];
+            button1.setAttributeNode(attrclass3);
+            
+            attrname = document.createAttribute("name");
+            attrname.value = "sunny";
+            icon1 = document.getElementsByClassName("lighticon")[0];
+            icon1.setAttributeNode(attrname);
+
+            //change light theme button
+            attrclass4 = document.createAttribute("class");
+            attrclass4.value = "themebuttondark";
+            button2 = document.getElementsByClassName("themebuttondarkselected")[0];
+            button2.setAttributeNode(attrclass4);
+
+            attrname = document.createAttribute("name");
+            attrname.value = "moon-outline";
+            icon2 = document.getElementsByClassName("darkicon")[0];
+            icon2.setAttributeNode(attrname);
+
+            //change generator button
+            attrclass6 = document.createAttribute("class");
+            attrclass6.value = "passgenlight";
+            button4 = document.getElementsByClassName("passgendark")[0];
+            button4.setAttributeNode(attrclass6);
+        };
+
+        function darktheme() {
+            //change body theme
+            attrclass = document.createAttribute("class");
+            attrclass.value = "dark";
+            body = document.getElementsByTagName("body")[0];
+            body.setAttributeNode(attrclass);
+
+            //change dark theme button
+            attrclass3 = document.createAttribute("class");
+            attrclass3.value = "themebuttondarkselected";
+            button1 = document.getElementsByClassName("themebuttondark")[0];
+            button1.setAttributeNode(attrclass3);
+            
+            attrname = document.createAttribute("name");
+            attrname.value = "moon";
+            icon1 = document.getElementsByClassName("darkicon")[0];
+            icon1.setAttributeNode(attrname);
+
+            //change light theme button
+            attrclass4 = document.createAttribute("class");
+            attrclass4.value = "themebuttonlight";
+            button2 = document.getElementsByClassName("themebuttonlightselected")[0];
+            button2.setAttributeNode(attrclass4);
+
+            attrname = document.createAttribute("name");
+            attrname.value = "sunny-outline";
+            icon2 = document.getElementsByClassName("lighticon")[0];
+            icon2.setAttributeNode(attrname);
+
+            //change generator button
+            attrclass6 = document.createAttribute("class");
+            attrclass6.value = "passgendark";
+            button4 = document.getElementsByClassName("passgenlight")[0];
+            button4.setAttributeNode(attrclass6);
+        };
+
+        //password generator
+        output = document.getElementById("generated_pass");
+
+        function generatepassword(){
+            length = 10;
+            charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            pwd = '';
+
+            for (var i = 0, n = charset.length; i < length; i++){
+                pwd += charset.charAt(Math.floor(Math.random() * n));
+            }; 
+
+            document.getElementById("output").innerHTML = pwd;
+        };
+    </script>
+
+    <body class="dark">
+        <!---Theme Menu--->
+        <div style="display: flex;">
+            <div class="thememenu">
+                <a class="themebuttonlight" onclick="lighttheme()"><ion-icon class="lighticon" name="sunny-outline"></ion-icon></a>
+                <a class="themebuttondarkselected" onclick="darktheme()"><ion-icon class="darkicon" name="moon"></ion-icon></a>
+            </div>
+        </div>
+
+        <!---Title--->
+        <center><h1 style="font-family: Poppins; font-size: 50px; text-decoration: underline;">Password Generator</h1></center>
+
+        <!---Output--->
+        <center><div id="output" style="font-size: 50px;font-family: Poppins;"></div></center>
+
+        <!---Password Generator--->
+        <div class="container">
+            <a class="passgendark" onclick="generatepassword()">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Generator
+            </a>
+        </div>
+</html>

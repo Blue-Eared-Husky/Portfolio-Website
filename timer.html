@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Timer</title>
+
+        <link rel="stylesheet" href="style.css">
+        
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    </head>
+
+    <script>
+        //changes theme
+        function lighttheme() {
+            //change body theme
+            attrclass = document.createAttribute("class");
+            attrclass.value = "light"
+            body = document.getElementsByTagName("body")[0];
+            body.setAttributeNode(attrclass);
+
+            //change dark theme button
+            attrclass3 = document.createAttribute("class");
+            attrclass3.value = "themebuttonlightselected";
+            button1 = document.getElementsByClassName("themebuttonlight")[0];
+            button1.setAttributeNode(attrclass3);
+            
+            attrname = document.createAttribute("name");
+            attrname.value = "sunny";
+            icon1 = document.getElementsByClassName("lighticon")[0];
+            icon1.setAttributeNode(attrname);
+
+            //change light theme button
+            attrclass4 = document.createAttribute("class");
+            attrclass4.value = "themebuttondark";
+            button2 = document.getElementsByClassName("themebuttondarkselected")[0];
+            button2.setAttributeNode(attrclass4);
+
+            attrname = document.createAttribute("name");
+            attrname.value = "moon-outline";
+            icon2 = document.getElementsByClassName("darkicon")[0];
+            icon2.setAttributeNode(attrname);
+
+            //change title
+            attrclass2 = document.createAttribute("class");
+            attrclass2.value = "titertitlelight";
+            body = document.getElementsByClassName("timertitledark")[0];
+            body.setAttributeNode(attrclass2);
+
+            //change submit button
+            attrclass5 = document.createAttribute("class");
+            attrclass5.value = "submitbuttonlight";
+            body = document.getElementsByClassName("submitbuttondark")[0];
+            body.setAttributeNode(attrclass5);
+
+            //change stop alarm button
+            attrclass6 = document.createAttribute("class");
+            attrclass6.value = "stopAlarmLight";
+            body = document.getElementsByClassName("stopAlarmDark")[0];
+            body.setAttributeNode(attrclass6);
+        };
+
+        function darktheme() {
+            //change body theme
+            attrclass = document.createAttribute("class");
+            attrclass.value = "dark"
+            body = document.getElementsByTagName("body")[0];
+            body.setAttributeNode(attrclass);
+
+            //change dark theme button
+            attrclass3 = document.createAttribute("class");
+            attrclass3.value = "themebuttondarkselected";
+            button1 = document.getElementsByClassName("themebuttondark")[0];
+            button1.setAttributeNode(attrclass3);
+            
+            attrname = document.createAttribute("name");
+            attrname.value = "moon";
+            icon1 = document.getElementsByClassName("darkicon")[0];
+            icon1.setAttributeNode(attrname);
+
+            //change light theme button
+            attrclass4 = document.createAttribute("class");
+            attrclass4.value = "themebuttonlight";
+            button2 = document.getElementsByClassName("themebuttonlightselected")[0];
+            button2.setAttributeNode(attrclass4);
+
+            attrname = document.createAttribute("name");
+            attrname.value = "sunny-outline";
+            icon2 = document.getElementsByClassName("lighticon")[0];
+            icon2.setAttributeNode(attrname);
+
+            //change title
+            attrclass2 = document.createAttribute("class");
+            attrclass2.value = "timertitledark";
+            body = document.getElementsByClassName("titertitlelight")[0];
+            body.setAttributeNode(attrclass2);
+
+            //change submit button
+            attrclass5 = document.createAttribute("class");
+            attrclass5.value = "submitbuttondark";
+            body = document.getElementsByClassName("submitbuttonlight")[0];
+            body.setAttributeNode(attrclass5);
+
+            //change stop alarm button
+            attrclass6 = document.createAttribute("class");
+            attrclass6.value = "stopAlarmDark";
+            body = document.getElementsByClassName("stopAlarmLight")[0];
+            body.setAttributeNode(attrclass6);
+        };
+
+        function timer(){
+            //hide the button
+            if (document.getElementsByClassName("stopAlarmDark") == undefined){
+                document.getElementsByClassName("stopAlarmLight")[0].style.visibility = "hidden";
+            } else {
+                document.getElementsByClassName("stopAlarmDark")[0].style.visibility = "hidden";
+            };
+
+            //define units
+            h = document.getElementById("hours").value;
+            console.log(h);
+            if (h == ""){
+                h = 0;
+            };
+
+            m = document.getElementById("minutes").value;
+            if (m == ""){
+                m = 0;
+            };
+
+            s = document.getElementById("seconds").value;
+            if (s == ""){
+                s = 0;
+            };
+
+            //decrease every second
+             const intervaltimer = setInterval(() => {
+                if (s > 0){
+                    s -= 1;
+                    time = String(h) + "h:" + String(m) + "min:" + String(s) + "s";
+                    document.getElementsByClassName("showTimer")[0].innerHTML = time;
+                }
+                else if (m > 0){
+                    m -= 1;
+                    s += 59;
+                    time = String(h) + "h:" + String(m) + "min:" + String(s) + "s";
+                    document.getElementsByClassName("showTimer")[0].innerHTML = time;
+                }
+                else if (h > 0){
+                    h -= 1;
+                    m += 59;
+                    s += 59;
+                    time = String(h) + "h:" + String(m) + "min:" + String(s) + "s";
+                    document.getElementsByClassName("showTimer")[0].innerHTML = time;
+                }
+                else {
+                    clearInterval(intervaltimer);
+                    stop(h, m, s);
+                };
+            }, 1000);
+
+            function stop(h, m, s){
+                if (document.getElementsByClassName("stopAlarmDark") == undefined){
+                    document.getElementsByClassName("stopAlarmLight")[0].style.visibility = "visible";
+                } else {
+                    document.getElementsByClassName("stopAlarmDark")[0].style.visibility = "visible";
+                };
+
+                document.getElementById("alarm").play();
+            }
+        };
+
+        function stopAlarm(){
+            alarm = document.getElementById("alarm");
+            alarm.pause();
+            alarm.currentTime = 0;
+        }
+    </script>
+
+    <body class="dark">
+        <!---Theme Menu--->
+        <div style="display: flex;">
+            <div class="thememenu">
+                <a class="themebuttonlight" onclick="lighttheme()"><ion-icon class="lighticon" name="sunny-outline"></ion-icon></a>
+                <a class="themebuttondarkselected" onclick="darktheme()"><ion-icon class="darkicon" name="moon"></ion-icon></a>
+            </div>
+        </div>
+
+        <!---Title--->
+        <center>
+            <div class="timertitledark">
+                <h1>Timer</h1>
+                <h1>Timer</h1>
+            </div>
+        </center>
+        
+        <!---Set Time--->
+        <div style="display: flex; flex-wrap: wrap; flex-direction: row; justify-content: space-evenly;">
+            <div style="justify-content: center; justify-items: center;">
+                <center>
+                    <h3>Hours</h3>
+                    <input type="number" p="[0-9]" placeholder="0" id="hours"/>
+                </center>
+            </div>
+
+            <div style="justify-content: center; justify-items: center;">
+                <center>
+                    <h3>Minutes</h3>
+                    <input type="number" p="[0-9]" placeholder="0" id="minutes"/>
+                </center>
+            </div>
+
+            <div style="justify-content: center; justify-items: center;">
+                <center>
+                    <h3>Seconds</h3>
+                    <input type="number" p="[0-9]" placeholder="0" id="seconds"/>
+                </center>
+            </div>
+        </div>
+
+        <!---Start Timer--->
+        <center>
+            <a class="submitbuttondark" onclick="timer()">Start</a>
+        </center>
+
+        <!---Show Timer--->
+        <center>
+            <div class = "showTimer" style="font-size: 30px;"> </div>
+            <button class = "stopAlarmDark" style = "visibility: hidden;" onclick="stopAlarm()">Stop Alarm</button>
+            <audio id = "alarm" loop>
+                <source src="alarm.wav" type="audio/wav"></source>
+                Your browser does not support the audio tag.
+            </audio>
+        </center>
+</html>
